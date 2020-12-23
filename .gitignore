@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+package-lock.json
 /.pnp
 .pnp.js
 
@@ -10,6 +11,8 @@
 
 # production
 /build
+
+rest.http
 
 # misc
 .DS_Store
@@ -21,3 +24,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+

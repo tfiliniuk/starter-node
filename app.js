@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.get('/', async (req, res, next) => {
-  res.send('Test get');
+  res.send('Test get after deploy');
 });
 
 app.use('/auth', AuthRoute);
