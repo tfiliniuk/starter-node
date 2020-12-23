@@ -11,3 +11,4 @@ yarn dev
 ```
 
 Open [http://localhost:5000](http://localhost:5000) with your browser to see the result.
+or [https://app-starter-node.herokuapp.com](https://app-starter-node.herokuapp.com)
