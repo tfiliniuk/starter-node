@@ -142,7 +142,8 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
     await user.save({ validateBeforeSave: false });
-    throw createError.BadRequest('Email could not be sent');
+    // throw createError.BadRequest('Email could not be sent');
+    res.status(400).json({ success: false, error });
   }
 
   // res.status(200).json({
