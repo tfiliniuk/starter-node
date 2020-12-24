@@ -6,7 +6,7 @@ const sendEmail = async (options) => {
     smtpTransport({
       service: process.env.GMAIL_SERVICE_NAME,
       host: process.env.GMAIL_SERVICE_HOST,
-      // secure: process.env.GMAIL_SERVICE_SECURE,
+      secure: process.env.GMAIL_SERVICE_SECURE,
       port: process.env.GMAIL_SERVICE_PORT,
       auth: {
         user: process.env.GMAIL_USER_NAME,
