@@ -114,10 +114,10 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/auth/forgot-password
 // @access  Public
 exports.forgotPassword = asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({ email: req.body.email }).select(
+  const user = await User.findOne({ email: req.body.email }).select([
     '+resetPasswordToken',
-    '+resetPasswordExpire'
-  );
+    '+resetPasswordExpire',
+  ]);
 
   if (!user) throw createError.NotFound('There is no user with that email');
 
@@ -125,9 +125,7 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetUrl = `${req.protocol}://${req.get(
-    'host'
-  )}/auth/reset-password/${resetToken}`;
+  const resetUrl = `${req.protocol}://localhost:3000/login/${resetToken}`;
 
   const message = `You are receiving email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
 
