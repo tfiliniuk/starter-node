@@ -14,7 +14,7 @@ const sendEmail = async (options) => {
         pass: process.env.GMAIL_USER_PASSWORD,
       },
       tls: {
-        rejectUnauthorized: true,
+        rejectUnauthorized: false,
       },
     })
   );
