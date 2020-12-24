@@ -8,6 +8,7 @@ const sendEmail = async (options) => {
       host: process.env.GMAIL_SERVICE_HOST,
       secure: process.env.GMAIL_SERVICE_SECURE,
       port: process.env.GMAIL_SERVICE_PORT,
+      ignoreTLS: false,
       auth: {
         user: process.env.GMAIL_USER_NAME,
         pass: process.env.GMAIL_USER_PASSWORD,
