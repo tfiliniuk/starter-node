@@ -8,6 +8,7 @@ const {
   refreshToken,
   updatePassword,
   updateDetails,
+  forgotPassword,
 } = require('../controllers/auth');
 // const { verifyAccessToken } = require('../helpers/jwt_helper');
 
@@ -18,6 +19,7 @@ router.post('/login', login);
 router.post('/refresh-token', refreshToken);
 router.post('/update-password', protect, updatePassword);
 router.put('/update-details', protect, updateDetails);
+router.post('/forgot-password', forgotPassword);
 
 router.get('/me', protect, getMe);
 module.exports = router;

@@ -31,12 +31,20 @@ Content-Type: application/json
   "password": "123456"
 }
  
+###Forgot Password Route
+POST http://localhost:5000/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "t.filiniuk@gmail.com"
+}
+
 ###Register Route
 POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-  "email": "test@testx.com",
+  "email": "t.filiniuk@gmail.com",
   "password": "123456",
   "name": "Test"
 }
