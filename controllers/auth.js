@@ -145,12 +145,12 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
     // throw createError.BadRequest('Email could not be sent');
     res.status(400).json({ success: false, error });
   }
-
-  // res.status(200).json({
-  //   success: true,
-  //   data: user,
-  // });
 });
+
+// @desc    Reset password
+// @route   PUT /api/v1/auth/reset-password/:resettoken
+// @access  Public
+exports.resetPassword = asyncHandler(async (req, res, next) => {});
 
 // Get token from model, create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
