@@ -114,7 +114,10 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/auth/forgot-password
 // @access  Public
 exports.forgotPassword = asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email }).select(
+    '+resetPasswordToken',
+    '+resetPasswordExpire'
+  );
 
   if (!user) throw createError.NotFound('There is no user with that email');
 
