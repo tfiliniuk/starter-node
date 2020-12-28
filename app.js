@@ -5,6 +5,9 @@ const createError = require('http-errors');
 require('dotenv').config();
 const connectDB = require('./helpers/init_DB');
 
+// const http = require('http');
+// const socket = require('socket.io');
+const { createSocket } = require('./core/socket');
 // Export routes
 const AuthRoute = require('./routes/Auth.route');
 const UserRoute = require('./routes/User.route');
@@ -57,3 +60,5 @@ process.on('unhandledRejection', (err, promise) => {
   // Close server & exit process
   server.close(() => process.exit(1));
 });
+
+createSocket(server);

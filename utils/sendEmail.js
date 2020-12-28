@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
 
 const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport(
@@ -19,14 +21,30 @@ const sendEmail = async (options) => {
     })
   );
 
+  var handlebarsOptions = {
+    viewEngine: {
+      extName: '.handlebars',
+      // layoutsDir: path.resolve(__dirname, '../views'),
+      // partialsDir: path.resolve(__dirname, '../views'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve(__dirname, '../views'),
+    extName: '.handlebars',
+  };
+
+  transporter.use('compile', hbs(handlebarsOptions));
+
   const message = {
     from: `${process.env.FROM_NAME} <${process.env.GMAIL_USER_NAME}>`,
     to: options.email,
     subject: options.subject,
     text: options.message,
+    template: options.template,
+    context: options.context,
   };
 
-  const info = await transporter.sendMail(message);
+  await transporter.sendMail(message);
+  transporter.close();
 };
 
 module.exports = sendEmail;

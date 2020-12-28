@@ -39,3 +39,10 @@ exports.deleteAvatar = asyncHandler(async (req, res, next) => {
   });
   res.status(200).json({ success: true, data: user });
 });
+
+exports.getAllUsers = asyncHandler(async (req, res) => {
+  let users = await User.find({});
+  if (!users) throw createError.NotFound();
+
+  res.status(200).json({ success: true, data: users });
+});
